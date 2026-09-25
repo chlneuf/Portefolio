@@ -1,0 +1,1349 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>Portfolio — Informatique</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+  --paper:#F6F5F1;
+  --ink:#14171C;
+  --muted:#6B7078;
+  --line:#E1DFD8;
+  --accent:#3B4FD9;
+  --accent-soft:#EEF0FD;
+  --card:#FFFFFF;
+
+  --paper-dark:#0F1115;
+  --ink-dark:#EDEDEE;
+  --line-dark:#25272E;
+  --card-dark:#171A20;
+  --accent-soft-dark:#1B2140;
+
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --paper:var(--paper-dark);
+    --ink:var(--ink-dark);
+    --line:var(--line-dark);
+    --card:var(--card-dark);
+    --accent-soft:var(--accent-soft-dark);
+    --muted:#9A9EA8;
+  }
+}
+
+:root[data-theme="dark"]{
+  --paper:var(--paper-dark);
+  --ink:var(--ink-dark);
+  --line:var(--line-dark);
+  --card:var(--card-dark);
+  --accent-soft:var(--accent-soft-dark);
+  --muted:#9A9EA8;
+}
+
+*{
+  box-sizing:border-box;
+}
+
+html{
+  scroll-padding-top:70px;
+  scroll-behavior:smooth;
+}
+
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink);
+  font-family:'Inter',ui-sans-serif,system-ui,sans-serif;
+  line-height:1.55;
+}
+
+h1,h2,h3{
+  font-family:'Space Grotesk',sans-serif;
+  font-weight:600;
+  margin:0;
+}
+
+a{
+  color:inherit;
+}
+
+.wrap{
+  max-width:56rem;
+  margin:0 auto;
+  padding:0 1.5rem;
+}
+
+.fill{
+  color:var(--accent);
+  background:var(--accent-soft);
+  border:1px dashed var(--accent);
+  border-radius:4px;
+  padding:.05rem .4rem;
+  font-size:.92em;
+  font-style:italic;
+}
+
+.tbd{
+  border:1px dashed var(--line);
+  border-radius:8px;
+  padding:1rem 1.2rem;
+  color:var(--muted);
+  font-size:.92rem;
+  font-style:italic;
+  background:var(--card);
+}
+
+header{
+  position:sticky;
+  top:env(safe-area-inset-top,0px);
+  z-index:20;
+  background:var(--paper);
+  border-bottom:1px solid var(--line);
+}
+
+.navbar{
+  max-width:74rem;
+  margin:0 auto;
+  padding:1rem 1.5rem;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+
+.brand{
+  font-family:'Space Grotesk';
+  font-weight:700;
+  font-size:1.05rem;
+}
+
+nav{
+  display:flex;
+  gap:1.1rem;
+  flex-wrap:wrap;
+  font-size:.85rem;
+}
+
+nav a{
+  text-decoration:none;
+  color:var(--muted);
+  border-bottom:2px solid transparent;
+  padding-bottom:2px;
+}
+
+nav a:hover,
+nav a:focus-visible{
+  color:var(--ink);
+  border-color:var(--accent);
+}
+
+
+/* =========================================================
+   ACCUEIL + PHOTO DE PROFIL
+   ========================================================= */
+
+.hero{
+  padding:5rem 0 3.5rem;
+  max-width:74rem;
+  margin:0 auto;
+  padding-left:1.5rem;
+  padding-right:1.5rem;
+}
+
+/* Organisation du texte et de la photo */
+.hero-content{
+  display:grid;
+  grid-template-columns:1fr 240px;
+  align-items:center;
+  gap:3rem;
+}
+
+/* Cadre de la photo */
+.profile-photo-container{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+}
+
+/* Photo */
+.profile-photo{
+  width:220px;
+  height:220px;
+  object-fit:cover;
+  border-radius:50%;
+
+  /* Bordure autour de la photo */
+  border:4px solid var(--accent);
+
+  /* Petite ombre */
+  box-shadow:0 10px 30px rgba(0,0,0,.15);
+
+  /* Animation légère */
+  transition:transform .3s ease;
+}
+
+/* Effet lorsque la souris passe sur la photo */
+.profile-photo:hover{
+  transform:scale(1.04);
+}
+
+.hero .eyebrow{
+  color:var(--accent);
+  font-size:.85rem;
+  font-weight:600;
+}
+
+.hero h1{
+  font-size:clamp(2.1rem,5vw,3.2rem);
+  line-height:1.12;
+  margin:.6rem 0 1rem;
+  max-width:20ch;
+}
+
+.hero .lede{
+  color:var(--muted);
+  font-size:1.05rem;
+  max-width:42ch;
+  margin:0 0 1.6rem;
+}
+
+.hero .motto{
+  font-family:'Space Grotesk';
+  font-size:1.15rem;
+  margin:0 0 1.8rem;
+}
+
+.btnrow{
+  display:flex;
+  gap:.8rem;
+  flex-wrap:wrap;
+  margin-bottom:2.2rem;
+}
+
+.btn{
+  padding:.7rem 1.2rem;
+  border-radius:6px;
+  text-decoration:none;
+  font-size:.9rem;
+  font-weight:500;
+  border:1px solid var(--line);
+}
+
+.btn.primary{
+  background:var(--accent);
+  color:#fff;
+  border-color:var(--accent);
+}
+
+.chips{
+  display:flex;
+  flex-wrap:wrap;
+  gap:.5rem;
+}
+
+.chip{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:.35rem .85rem;
+  font-size:.82rem;
+}
+
+
+section{
+  padding:3.2rem 0;
+  border-top:1px solid var(--line);
+}
+
+.label{
+  color:var(--accent);
+  font-size:.82rem;
+  font-weight:600;
+  margin-bottom:.5rem;
+}
+
+h2.title{
+  font-size:1.7rem;
+  margin-bottom:1.6rem;
+}
+
+.grid2{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:1.4rem;
+}
+
+.grid3{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1rem;
+}
+
+.card{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1.4rem;
+}
+
+.card h3{
+  font-size:1.05rem;
+  margin-bottom:.4rem;
+}
+
+.card p{
+  color:var(--muted);
+  font-size:.9rem;
+  margin:.3rem 0 0;
+}
+
+
+/* =========================================================
+   TIMELINE
+   ========================================================= */
+
+.tl{
+  position:relative;
+  padding-left:1.8rem;
+}
+
+.tl::before{
+  content:"";
+  position:absolute;
+  left:.4rem;
+  top:.3rem;
+  bottom:.3rem;
+  width:2px;
+  background:var(--line);
+}
+
+.tlstep{
+  position:relative;
+  padding-bottom:2rem;
+}
+
+.tlstep::before{
+  content:attr(data-n);
+  position:absolute;
+  left:-1.8rem;
+  top:0;
+  width:1.6rem;
+  height:1.6rem;
+  border-radius:50%;
+  background:var(--accent);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:600;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.tlstep h3{
+  font-size:1rem;
+  margin-bottom:.5rem;
+}
+
+.tlstep .tbd{
+  margin-top:.4rem;
+}
+
+
+/* =========================================================
+   COMPETENCES
+   ========================================================= */
+
+.skillcat{
+  margin-bottom:1.6rem;
+}
+
+.skillcat > b{
+  font-family:'Space Grotesk';
+  display:block;
+  margin-bottom:.7rem;
+}
+
+.skill{
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:.9rem 1.1rem;
+  margin-bottom:.6rem;
+  background:var(--card);
+}
+
+.skill .name{
+  font-weight:600;
+  font-size:.95rem;
+}
+
+.skill .meta{
+  color:var(--muted);
+  font-size:.85rem;
+  margin-top:.25rem;
+}
+
+
+/* =========================================================
+   PROJETS
+   ========================================================= */
+
+.proj{
+  background:var(--card);
+  border:1px solid var(--line);
+  border-radius:10px;
+  padding:1.6rem;
+  margin-bottom:1.6rem;
+}
+
+.proj h3{
+  font-size:1.2rem;
+}
+
+.proj .sub{
+  color:var(--muted);
+  font-size:.85rem;
+  margin-bottom:1rem;
+}
+
+.proj h4{
+  font-family:'Inter';
+  font-weight:600;
+  font-size:.85rem;
+  margin:1rem 0 .4rem;
+  color:var(--accent);
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer{
+  border-top:1px solid var(--line);
+  padding:2.5rem 0 3rem;
+}
+
+footer .cols{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:1.5rem;
+  font-size:.9rem;
+}
+
+footer b{
+  display:block;
+  font-family:'Space Grotesk';
+  margin-bottom:.5rem;
+}
+
+footer .muted{
+  color:var(--muted);
+}
+
+
+/* =========================================================
+   VERSION MOBILE
+   ========================================================= */
+
+@media (max-width:760px){
+
+  nav{
+    display:none;
+  }
+
+  .grid2,
+  .grid3{
+    grid-template-columns:1fr;
+  }
+
+  footer .cols{
+    grid-template-columns:1fr;
+  }
+
+  /* Sur téléphone : texte puis photo */
+  .hero-content{
+    grid-template-columns:1fr;
+    gap:2rem;
+  }
+
+  /* Photo plus petite sur téléphone */
+  .profile-photo{
+    width:170px;
+    height:170px;
+  }
+
+  .profile-photo-container{
+    order:2;
+  }
+}
+
+
+/* Accessibilité */
+
+:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+@media (prefers-reduced-motion: reduce){
+  html{
+    scroll-behavior:auto;
+  }
+
+  .profile-photo{
+    transition:none;
+  }
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================================================
+     MENU
+     ========================================================= -->
+
+<header>
+
+  <div class="navbar">
+
+    <span class="brand">
+      <span class="fill">Church-Hill Ehirim</span>
+    </span>
+
+    <nav>
+
+      <a href="#apropos">À propos</a>
+      <a href="#parcours">Parcours</a>
+      <a href="#competences">Compétences</a>
+      <a href="#projets">Projets</a>
+      <a href="#stage">Stage</a>
+      <a href="#veille">Veille</a>
+      <a href="#appris">Appris</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+
+    </nav>
+
+  </div>
+
+</header>
+
+
+<!-- =========================================================
+     ACCUEIL
+     ========================================================= -->
+
+<section class="hero" style="border:none;padding-top:4rem;">
+
+  <div class="hero-content">
+
+
+    <!-- TEXTE DE PRESENTATION -->
+
+    <div>
+
+      <div class="eyebrow">
+        <span class="fill">Formation en cours BTS SIO</span>
+      </div>
+
+
+      <h1>
+        <span class="fill">Church-Hill Ehirim</span>
+      </h1>
+
+
+      <p class="lede">
+        <span class="fill">
+          Courte présentation de ton profil : ce qui te définit,
+          ton domaine d'intérêt en informatique (dev, web, réseau, sécurité…).
+        </span>
+      </p>
+
+
+      <p class="motto">
+        « <span class="fill">Augmente ta valeur</span> »
+      </p>
+
+
+      <div class="chips">
+
+        <span class="chip fill">
+          Savoir utiliser un ordinateur
+        </span>
+
+        <span class="chip fill">
+          Savoir communiquer
+        </span>
+
+        <span class="chip fill">
+          Créer un site web
+        </span>
+
+      </div>
+
+
+      <div class="btnrow" style="margin-top:1.6rem;">
+
+        <a class="btn primary" href="#parcours">
+          Découvrir mon parcours
+        </a>
+
+        <a class="btn" href="#projets">
+          Voir mes projets
+        </a>
+
+        <a class="btn" href="#cv">
+          Voir mon CV
+        </a>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         PHOTO DE PROFIL
+         ===================================================== -->
+
+    <div class="profile-photo-container">
+
+      <!--
+        IMPORTANT :
+
+        Mets ta photo dans le même dossier que ton fichier HTML.
+
+        Exemple :
+
+        portfolio/
+        ├── index.html
+        └── photo.jpg
+
+        Si ta photo possède un autre nom,
+        change simplement "photo.jpg".
+      -->
+
+      <img
+        src="/Churchphoto.JPG"
+        alt="Photo de profil de Church-Hill Ehirim"
+        class="profile-photo"
+      >
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     A PROPOS
+     ========================================================= -->
+
+<section id="apropos">
+
+  <div class="wrap">
+
+    <div class="label">
+      À propos de moi
+    </div>
+
+    <h2 class="title">
+      Qui je suis
+    </h2>
+
+
+    <div class="grid2">
+
+
+      <div>
+
+        <h3 style="margin-bottom:.5rem;">
+          Parcours & motivations
+        </h3>
+
+        <div class="tbd">
+
+          <p>
+            Après mon bac STMG, j’ai décidé de m’orienter vers
+            l’informatique, car c’est un domaine qui m’intéresse
+            et dans lequel j’aimerais évoluer professionnellement.
+          </p>
+
+          <p>
+            J’ai notamment eu l’occasion de faire un stage
+            dans le domaine des réseaux.
+          </p>
+
+          <p>
+            Cette expérience m’a permis de découvrir davantage
+            le fonctionnement des réseaux informatiques et de
+            mieux comprendre le travail dans ce domaine.
+          </p>
+
+          <p>
+            Aujourd’hui, je souhaite continuer à développer
+            mes compétences en informatique, notamment en programmation.
+            Plus tard, j’aimerais devenir développeur dans le domaine
+            de l’intelligence artificielle.
+          </p>
+
+        </div>
+
+      </div>
+
+
+      <div>
+
+        <h3 style="margin-bottom:.5rem;">
+          Ce que je souhaite développer
+        </h3>
+
+        <div class="tbd">
+
+          Je souhaite prochainement approfondir mes compétences
+          en programmation, notamment en Kotlin et en Python.
+
+          <br><br>
+
+          Je souhaite également découvrir davantage le domaine
+          de l’intelligence artificielle, notamment comprendre
+          les bases du machine learning.
+
+          <br><br>
+
+          Enfin, j’aimerais continuer à progresser en algorithmique,
+          bases de données et développement d’applications.
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PARCOURS
+     ========================================================= -->
+
+<section id="parcours">
+
+  <div class="wrap">
+
+    <div class="label">
+      Mon parcours
+    </div>
+
+    <h2 class="title">
+      Ma progression
+    </h2>
+
+
+    <div class="tl">
+
+
+      <div class="tlstep" data-n="1">
+
+        <h3>Formation</h3>
+
+        <div class="tbd">
+
+          BAC Technologique option SIG au lycée Rosa Parks
+          Montegron en 2024-2025, puis BTS SIO SLAM au lycée
+          Léonard de Vinci à Melun.
+
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="2">
+
+        <h3>Premiers projets</h3>
+
+        <div class="tbd">
+          Projets réalisés en début de formation :
+          Hôtel Chambort, Moovie.db
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="3">
+
+        <h3>Acquisition de compétences</h3>
+
+        <div class="tbd">
+          Compétences acquises : Python, HTML/CSS, SQL
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="4">
+
+        <h3>Stage</h3>
+
+        <div class="tbd">
+
+          Collège de Paris :
+
+          <ul>
+            <li>3XC</li>
+            <li>Azure AD</li>
+            <li>Beyond Trust</li>
+            <li>Coreview</li>
+            <li>SharePoint</li>
+            <li>L'Asset</li>
+            <li>InTune</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="5">
+
+        <h3>Nouveaux projets</h3>
+
+        <div class="tbd">
+          Pas de nouveaux projets à ce jour.
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="6">
+
+        <h3>Compétences actuelles</h3>
+
+        <div class="tbd">
+          Aujourd'hui, je maîtrise les langages Python,
+          HTML/CSS et SQL et j'apprends le Kotlin.
+        </div>
+
+      </div>
+
+
+      <div class="tlstep" data-n="7">
+
+        <h3>Objectifs futurs</h3>
+
+        <div class="tbd">
+
+          <ul>
+            <li>Développement d'applications mobiles avec Kotlin</li>
+            <li>Approfondir mes connaissances en sécurité informatique</li>
+            <li>Participer à des projets collaboratifs</li>
+          </ul>
+
+        </div>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     COMPETENCES
+     ========================================================= -->
+
+<section id="competences">
+
+  <div class="wrap">
+
+    <div class="label">
+      Compétences
+    </div>
+
+    <h2 class="title">
+      Ce que je sais faire
+    </h2>
+
+
+    <div class="skillcat">
+
+      <b>Développement</b>
+
+      <div class="skill">
+
+        <div class="name fill">
+          <!--HTML, CSS
+        </div>
+
+        <div class="meta">
+          Création de pages web ·
+          Création de sites web-->
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="skillcat">
+
+      <b>Web</b>
+
+      <div class="skill">
+
+        <div class="name fill">
+           <!--Compétence web
+        </div>
+
+        <div class="meta fill">
+          Détails à compléter-->
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="skillcat">
+
+      <b>Outils & gestion de projet</b>
+
+      <div class="skill">
+
+        <div class="name fill">
+           <!--Outil / méthode
+        </div>
+
+        <div class="meta fill">
+          Détails à compléter-->
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     PROJETS
+     ========================================================= -->
+
+<section id="projets">
+
+  <div class="wrap">
+
+    <div class="label">
+      Projets
+    </div>
+
+    <h2 class="title">
+      Mes travaux
+    </h2>
+
+
+    <div class="proj">
+
+      <h3 class="fill">
+        Hôtel Chambort
+      </h3>
+
+      <div class="sub">
+        1ère année de BTS SIO · Période scolaire
+      </div>
+
+      <div class="tbd">
+        Objectif du projet : créer un site web pour un hôtel,
+        rajouter des pages et changer la structure du site.
+      </div>
+
+
+      <h4>Réalisation</h4>
+
+      <div class="tbd">
+        J'ai personnellement ajouté des pages à la conception
+        et à la mise en œuvre du site web, en utilisant HTML,
+        CSS et JavaScript.
+      </div>
+
+
+      <h4>Réflexion</h4>
+
+      <div class="tbd">
+        J'ai rencontré plusieurs difficultés lors de ce projet,
+        notamment concernant l'optimisation des performances
+        du site et sa compatibilité avec différents navigateurs.
+      </div>
+
+
+      <h4>Résultat</h4>
+
+      <div class="tbd">
+         <!--Résultat final, captures d'écran / images,
+        lien de démo si possible.-->
+      </div>
+
+
+      <h4>Bilan</h4>
+
+      <div class="tbd">
+        <!-- Ce que tu as appris, compétences développées,
+        améliorations possibles.-->
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     STAGE
+     ========================================================= -->
+
+<section id="stage">
+
+  <div class="wrap">
+
+    <div class="label">
+      Rapport de stage
+    </div>
+
+    <h2 class="title">
+      Mon stage
+    </h2>
+
+
+    <h3 style="font-size:1rem;margin-bottom:.5rem;">
+      L'entreprise
+    </h3>
+
+    <div class="tbd">
+      Présentation de l'entreprise, secteur d'activité,
+      contexte du stage.
+    </div>
+
+
+    <h3 style="font-size:1rem;margin:1.4rem 0 .5rem;">
+      Mes missions
+    </h3>
+
+    <div class="tbd">
+      Pour chaque mission : objectif, travail effectué,
+      outils utilisés, compétences mobilisées,
+      difficultés rencontrées, solutions trouvées et résultat.
+    </div>
+
+
+    <h3 style="font-size:1rem;margin:1.4rem 0 .5rem;">
+      Mes réalisations
+    </h3>
+
+    <div class="tbd">
+      Travaux réalisés pendant le stage,
+      avec images / captures d'écran si possible.
+    </div>
+
+
+    <h3 style="font-size:1rem;margin:1.4rem 0 .5rem;">
+      Ce que le stage m'a apporté
+    </h3>
+
+    <div class="tbd">
+      Nouvelles compétences, découverte du monde professionnel,
+      méthodes de travail apprises et évolution de ton projet professionnel.
+    </div>
+
+
+    <a
+      class="btn primary"
+      style="margin-top:1.4rem;display:inline-block;"
+      href="/content/Rapport de stage SIO22 v2.pdf"
+      download
+    >
+      Consulter le rapport de stage complet (PDF)
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     VEILLE
+     ========================================================= -->
+
+<section id="veille">
+
+  <div class="wrap">
+
+    <div class="label">
+      Veille technologique
+    </div>
+
+    <h2 class="title">
+      Ce que je suis
+    </h2>
+
+
+    <div class="card">
+
+      <h3 class="fill">
+        Sujet de veille
+      </h3>
+
+      <div style="color:var(--muted);font-size:.85rem;margin:.2rem 0 .8rem;">
+        Date
+      </div>
+
+      <div class="tbd">
+        Pourquoi ce sujet, problématique étudiée,
+        informations principales, évolutions récentes,
+        avantages, limites et enjeux.
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CE QUE J'AI APPRIS
+     ========================================================= -->
+
+<section id="appris">
+
+  <div class="wrap">
+
+    <div class="label">
+      Ce que j'ai appris
+    </div>
+
+    <h2 class="title">
+      Avant / Pendant / Après
+    </h2>
+
+
+    <div class="grid2">
+
+      <div class="card">
+
+        <h3>Avant</h3>
+
+        <p class="fill">
+          Ce que tu savais déjà.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Pendant</h3>
+
+        <p class="fill">
+          Ce que tu as découvert,
+          les difficultés rencontrées.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Après</h3>
+
+        <p class="fill">
+          Ce que tu sais faire maintenant.
+        </p>
+
+      </div>
+
+
+      <div class="card">
+
+        <h3>Avec du recul</h3>
+
+        <p class="fill">
+          Ce que tu améliorerais aujourd'hui.
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     CV
+     ========================================================= -->
+
+<section id="cv">
+
+  <div class="wrap">
+
+    <div class="label">
+      CV
+    </div>
+
+    <h2 class="title">
+      Mon CV
+    </h2>
+
+
+    <div class="tbd">
+
+      Formation, expériences, stage, compétences,
+      projets, certifications et coordonnées professionnelles.
+
+    </div>
+
+
+    <a
+      class="btn primary"
+      style="margin-top:1.2rem;display:inline-block;"
+      href="/content/CVChurch.pdf"
+      download
+    >
+      Télécharger mon CV (PDF)
+    </a>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     RESSOURCES
+     ========================================================= -->
+
+<section id="ressources">
+
+  <div class="wrap">
+
+    <div class="label">
+      Ressources
+    </div>
+
+    <h2 class="title">
+      Sources utilisées
+    </h2>
+
+
+    <div class="tbd">
+
+      Documentation, sites spécialisés, articles,
+      tutoriels et ressources utilisées pendant les projets.
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- =========================================================
+     FOOTER
+     ========================================================= -->
+
+<footer id="contact">
+
+  <div class="wrap">
+
+    <div class="label">
+      Contact
+    </div>
+
+
+    <div class="cols">
+
+
+      <div>
+
+        <b>Email</b>
+
+        <span class="fill">
+          churchhillehiri@gmail.com
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <b>Téléphone</b>
+
+        <span class="fill">
+          07 53 30 93 64
+        </span>
+
+      </div>
+
+
+      <div>
+
+        <b>Réseaux</b>
+
+        <span class="muted">
+
+          <br>
+
+          <a href="https://github.com/chlneuf" target="_blank">
+            GitHub
+          </a>
+
+          <br><br>
+
+          <a
+            href="https://www.linkedin.com/in/church-hill-ehirim-8b09b3385/"
+            target="_blank"
+          >
+            LinkedIn
+          </a>
+
+        </span>
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+</footer>
+
+
+</body>
+</html>
